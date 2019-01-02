@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'AdamCGPro';
+  font-style: normal;
+  font-weight: normal;
+  src: local('AdamCGPro'), url('Fonts/AdamCGPro.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Inconsolata'), url('Fonts/Inconsolata.ttf') format('truetype');
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'AdamCGPro';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
