@@ -77,8 +77,8 @@ button {
   color: #737373;
   border-radius: 5px;
   transition: all 0.2s;
-  box-shadow: 0px 8px 0px 0px #CCC599; /* CCC599 A66615 */
-  background: #FFF7C0; /* FFF7C0 FFAA40 */
+  box-shadow: 0px 8px 0px 0px #CCC599;
+  background: #FFF7C0;
 }
 
 .btn:hover {
@@ -87,8 +87,8 @@ button {
 }
 
 .btn:active {
-  margin-top: 5px;
-  box-shadow: 0px 0px 0px 0px #CCC599;
+  margin-top: 5px !important;
+  box-shadow: 0px 0px 0px 0px #CCC599 !important;
 }
 
 .btn:focus {
