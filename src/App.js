@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  state = {
+    sudoku: null
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,7 +14,7 @@ class App extends Component {
     );
   }
 
-  drawSudoku() {
+  drawSudoku = () => {
     if (this.state.sudoku !== null) {
       let final = [];
       for (let i = 0; i < 9; i++) {

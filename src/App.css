@@ -82,8 +82,8 @@ button {
 }
 
 .btn:active {
-  margin-top: 5px;
-  box-shadow: 0px 0px 0px 0px #CCC599;
+  margin-top: 5px !important;
+  box-shadow: 0px 0px 0px 0px #CCC599 !important;
 }
 
 .btn:hover {
