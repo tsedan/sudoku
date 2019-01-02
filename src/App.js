@@ -6,10 +6,6 @@ class App extends Component {
     sudoku: null
   }
 
-  componentDidMount() {
-    this.setState({ sudoku: unsolve(scrambleSudoku()) });
-  }
-
   render() {
     return (
       <div className="App">
@@ -40,7 +36,9 @@ class App extends Component {
       }
       return <table><tbody>{final}</tbody></table>;
     } else {
-      return <p>Generating</p>;
+      return <button className="btn GenerateButton" onClick={() => {
+        this.setState({ sudoku: unsolve(scrambleSudoku()) });
+      }}>Generate Sudoku</button>;
     }
   }
 
