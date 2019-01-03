@@ -29,25 +29,35 @@ tr {
 td {
   height:30px;
   width:30px;
-  border: 1px solid;
   font-size: 5vmin;
 }
 
-td:first-child {
-  border-left: solid;
-  border-left-width: thick;
+.nonclickable {
+  pointer-events: none;
+  user-select: none;
 }
+
+.clickable:hover {
+  background-color: #656565;
+  cursor: pointer;
+}
+
 td:nth-child(3n) {
   border-right: solid;
   border-right-width: thick;
 }
-tr:first-child {
-  border-top: solid;
-  border-top-width: thick;
+
+td:last-child {
+  border-right: none;
 }
+
 tr:nth-child(3n) td {
   border-bottom: solid;
   border-bottom-width: thick;
+}
+
+tr:last-child td {
+  border-bottom: none;
 }
 
 button {

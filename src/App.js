@@ -22,11 +22,11 @@ class App extends Component {
         for (let j = 0; j < 9; j++) {
           if (this.state.sudoku[i * 9 + j] !== 0) {
             nextLine.push(
-              <td key={"Cell " + i + " " + j}>{this.state.sudoku[i * 9 + j]}</td>
+              <td className="nonclickable" key={"Cell " + i + " " + j}>{this.state.sudoku[i * 9 + j]}</td>
             );
           } else {
             nextLine.push(
-              <td key={"Cell " + i + " " + j} />
+              <td className="clickable" key={"Cell " + i + " " + j} />
             );
           }
         }
