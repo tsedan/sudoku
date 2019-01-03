@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-var solution;
-
 class App extends Component {
   state = {
     sudoku: null
@@ -22,9 +20,9 @@ class App extends Component {
       for (let i = 0; i < 9; i++) {
         let nextLine = [];
         for (let j = 0; j < 9; j++) {
-          if (this.state.sudoku[i * 9 + j] !== 0) {
+          if (this.state.sudoku[i][j] !== 0) {
             nextLine.push(
-              <td className="nonclickable" key={"Cell " + i + " " + j}>{this.state.sudoku[i * 9 + j]}</td>
+              <td className="nonclickable" key={"Cell " + i + " " + j}>{this.state.sudoku[i][j]}</td>
             );
           } else {
             nextLine.push(
@@ -39,61 +37,48 @@ class App extends Component {
       return <table><tbody>{final}</tbody></table>;
     } else {
       return <button className="btn GenerateButton" onClick={() => {
-        solution = scrambleSudoku();
-        this.setState({ sudoku: unsolve(solution) });
+        this.setState({ sudoku: scrambleSudoku() });
       }}>Generate Sudoku</button>;
     }
   }
 
 }
 
-
-function turnTo1D(board) {
-  let vboard = [];
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      vboard[vboard.length] = board[i][j];
-    }
-  }
-
-  return vboard;
-}
-
 function scrambleSudoku() {
   const boards = [
     [
-      [5,3,4,6,7,8,9,1,2],
-      [6,7,2,1,9,5,3,4,8],
-      [1,9,8,3,4,2,5,6,7],
-      [8,5,9,7,6,1,4,2,3],
-      [4,2,6,8,5,3,7,9,1],
-      [7,1,3,9,2,4,8,5,6],
-      [9,6,1,5,3,7,2,8,4],
-      [2,8,7,4,1,9,6,3,5],
-      [3,4,5,2,8,6,1,7,9]
+      [0,0,8,1,0,0,0,9,0],
+      [0,0,9,0,0,2,0,0,0],
+      [0,0,3,0,0,7,6,0,2],
+      [1,7,0,8,0,0,0,0,4],
+      [0,0,0,0,0,0,0,0,0],
+      [5,0,0,0,0,4,0,7,8],
+      [9,0,1,4,0,0,2,0,0],
+      [0,0,0,2,0,0,9,0,0],
+      [0,6,0,0,0,1,4,0,0]
     ],
     [
-      [5,3,9,6,7,4,1,8,2],
-      [7,1,6,2,8,9,3,4,5],
-      [8,2,4,5,3,1,7,6,9],
-      [6,9,5,8,1,7,4,2,3],
-      [1,4,7,3,9,2,8,5,6],
-      [2,8,3,4,5,6,9,7,1],
-      [9,6,1,7,4,5,2,3,8],
-      [4,5,8,1,2,3,6,9,7],
-      [3,7,2,9,6,8,5,1,4]
+      [0,4,0,0,0,2,3,8,0],
+      [0,0,0,0,6,0,0,0,0],
+      [0,8,7,0,0,0,0,9,0],
+      [0,9,1,0,8,0,0,0,0],
+      [4,0,0,0,1,0,0,0,6],
+      [0,0,0,0,2,0,8,4,0],
+      [0,1,0,0,0,0,5,7,0],
+      [0,0,0,0,9,0,0,0,0],
+      [0,3,9,5,0,0,0,1,0]
     ],
     [
-      [4,5,2,3,9,1,8,7,6],
-      [3,1,8,6,7,5,2,9,4],
-      [6,7,9,4,2,8,3,1,5],
-      [8,3,1,5,6,4,7,2,9],
-      [2,4,5,9,8,7,1,6,3],
-      [9,6,7,2,1,3,5,4,8],
-      [7,9,6,8,5,2,4,3,1],
-      [1,8,3,7,4,9,6,5,2],
-      [5,2,4,1,3,6,9,8,7]
-    ]
+      [0,7,0,2,0,0,0,6,5],
+      [0,0,0,0,0,0,0,8,0],
+      [0,0,2,0,5,0,4,0,1],
+      [0,8,0,0,0,5,0,0,0],
+      [7,0,6,0,0,0,1,0,4],
+      [0,0,0,6,0,0,0,7,0],
+      [4,0,9,0,3,0,6,0,0],
+      [0,2,0,0,0,0,0,0,0],
+      [1,3,0,0,0,9,0,2,0]
+    ],
   ];
 
   let board = boards[Math.floor(Math.random() * boards.length)];
@@ -109,15 +94,17 @@ function scrambleSudoku() {
   const perms = Math.floor(Math.random() * 10);
   board = ceasarCipher(board,perms);
 
-  return turnTo1D(board);
+  return board;
 }
 
 function ceasarCipher(board,times) {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      board[i][j] = board[i][j] + times;
-      if (board[i][j] > 9) {
-        board[i][j] = board[i][j] - 9;
+      if (board[i][j] > 0) {
+        board[i][j] = board[i][j] + times;
+        if (board[i][j] > 9) {
+          board[i][j] = board[i][j] - 9;
+        }
       }
     }
   }
@@ -192,84 +179,6 @@ function copy(o) {
     output[key] = (typeof v === "object") ? copy(v) : v;
   }
   return output;
-}
-
-function unsolve(board) {
-  let listPos = shuffle(allList(81));
-
-  for (let i = 0; i < 81; i++) {
-    let pos = listPos[i];
-    const original = board[pos];
-
-    board[pos] = 0;
-
-    const solutions = solve(board);
-    if (solutions !== 1) {
-      board[pos] = original;
-    }
-  }
-
-  return board;
-}
-
-function allList(num) {
-  const final = [];
-  for (let i = 0; i < num; i++) {
-    final[final.length] = i;
-  }
-  return final;
-}
-
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function notConflicting(board,row,col) {
-  const v = board[row * 9 + col];
-  for (let r = 0; r < 9; r++)
-    if (board[r * 9 + col] === v && r !== row) return 0;
-  for (let c = 0; c < 9; c++)
-    if (board[row * 9 + c] === v && c !== col) return 0;
-  let left = 3 * Math.floor(col / 3);
-  let top = 3 * Math.floor(row / 3);
-  for (let r = top; r < top + 3; r++)
-    for (let c = left; c < left + 3; c++)
-      if (board[r * 9 + c] === v && c !== col && r !== row) return 0;
-  return 1;
-}
-
-function emptyCells(board) {
-  const a = [];
-  for (let i = 0; i < 81; i++)
-    if (board[i] === 0)
-      a.push(i);
-  return a;
-}
-
-function solveCell(board,index,next_cells) {
-  if (next_cells.length === index) {
-    return 1;
-  }
-  const cell = next_cells[index];
-  const row = Math.floor(cell / 9) | 0;
-  const col = cell % 9;
-  let solutions = 0;
-  for (let i = 0; i < 9; i++) {
-    board[cell] = i + 1;
-    if (notConflicting(board,row,col)) {
-      solutions += solveCell(board,index + 1,next_cells);
-    }
-  }
-  board[cell] = 0;
-  return solutions;
-}
-
-function solve(board) {
-  return solveCell(board,0,emptyCells(board));
 }
 
 export default App;
