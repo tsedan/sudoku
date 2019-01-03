@@ -42,6 +42,11 @@ td {
   cursor: pointer;
 }
 
+.clickable:active {
+  background-color: #656565;
+  cursor: pointer;
+}
+
 td:nth-child(3n) {
   border-right: solid;
   border-right-width: thick;
