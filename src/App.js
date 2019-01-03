@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+var solution;
+
 class App extends Component {
   state = {
     sudoku: null
@@ -37,7 +39,8 @@ class App extends Component {
       return <table><tbody>{final}</tbody></table>;
     } else {
       return <button className="btn GenerateButton" onClick={() => {
-        this.setState({ sudoku: unsolve(scrambleSudoku()) });
+        solution = scrambleSudoku();
+        this.setState({ sudoku: unsolve(solution) });
       }}>Generate Sudoku</button>;
     }
   }
