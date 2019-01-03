@@ -1,14 +1,14 @@
 {
-  "main.css": "/sudoku/static/css/main.aa36f2c1.chunk.css",
-  "main.js": "/sudoku/static/js/main.a1025197.chunk.js",
-  "main.js.map": "/sudoku/static/js/main.a1025197.chunk.js.map",
+  "main.css": "/sudoku/static/css/main.55f55a54.chunk.css",
+  "main.js": "/sudoku/static/js/main.ef188530.chunk.js",
+  "main.js.map": "/sudoku/static/js/main.ef188530.chunk.js.map",
   "static/js/1.4a34e45d.chunk.js": "/sudoku/static/js/1.4a34e45d.chunk.js",
   "static/js/1.4a34e45d.chunk.js.map": "/sudoku/static/js/1.4a34e45d.chunk.js.map",
   "runtime~main.js": "/sudoku/static/js/runtime~main.738a16a1.js",
   "runtime~main.js.map": "/sudoku/static/js/runtime~main.738a16a1.js.map",
-  "static/css/main.aa36f2c1.chunk.css.map": "/sudoku/static/css/main.aa36f2c1.chunk.css.map",
+  "static/css/main.55f55a54.chunk.css.map": "/sudoku/static/css/main.55f55a54.chunk.css.map",
   "static/media/index.css": "/sudoku/static/media/Inconsolata.29b00ebc.ttf",
   "index.html": "/sudoku/index.html",
-  "precache-manifest.6640829383a72def1ac26c79ad77211d.js": "/sudoku/precache-manifest.6640829383a72def1ac26c79ad77211d.js",
+  "precache-manifest.0746d94db9ac85139d819aab324b05c0.js": "/sudoku/precache-manifest.0746d94db9ac85139d819aab324b05c0.js",
   "service-worker.js": "/sudoku/service-worker.js"
 }
