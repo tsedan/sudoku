@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/sudoku/static/js/runtime~main.738a16a1.js"
   },
   {
-    "revision": "b2e39822d3ac1f376ae0",
-    "url": "/sudoku/static/js/main.b2e39822.chunk.js"
+    "revision": "51d5440bfd7ad0dad2cd",
+    "url": "/sudoku/static/js/main.51d5440b.chunk.js"
   },
   {
     "revision": "4a34e45d34cafb7623bd",
     "url": "/sudoku/static/js/1.4a34e45d.chunk.js"
   },
   {
-    "revision": "b2e39822d3ac1f376ae0",
+    "revision": "51d5440bfd7ad0dad2cd",
     "url": "/sudoku/static/css/main.55f55a54.chunk.css"
   },
   {
-    "revision": "7cc86ff2e7ea68100915ded260cc15cf",
+    "revision": "d2ffb90f09eaa73a2edc617fa2d22809",
     "url": "/sudoku/index.html"
   }
 ];
