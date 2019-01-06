@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import Modal from './Modal.js';
 import './App.css';
 
 class App extends Component {
   state = {
-    sudoku: null
+    sudoku: null,
+    modalPos: null
   }
 
   render() {
@@ -14,6 +16,35 @@ class App extends Component {
     );
   }
 
+  getClass = (pos,original) => {
+    if (!original) {
+      let nameClass = "";
+      if (this.state.modalPos !== null) {
+        if (arrEqual(this.state.modalPos, pos)) {
+          nameClass += "clicked";
+        } else if (isNeighbor(this.state.modalPos, pos)) {
+          nameClass += "neighbor";
+        }
+        if (!arrEqual(this.state.modalPos, pos)) {
+          nameClass += " clickable";
+        }
+        nameClass += addBorder(this.state.modalPos, pos);
+      } else {
+        nameClass = "clickable";
+      }
+      return nameClass;
+    } else {
+      let nameClass = "nonclickable";
+      if (this.state.modalPos !== null) {
+        if (isNeighbor(this.state.modalPos, pos)) {
+          nameClass += " neighbor";
+          nameClass += addBorder(this.state.modalPos, pos);
+        }
+      }
+      return nameClass;
+    }
+  }
+
   drawSudoku = () => {
     if (this.state.sudoku !== null) {
       let final = [];
@@ -22,11 +53,14 @@ class App extends Component {
         for (let j = 0; j < 9; j++) {
           if (this.state.sudoku[i][j] !== 0) {
             nextLine.push(
-              <td className="nonclickable" key={"Cell " + i + " " + j}>{this.state.sudoku[i][j]}</td>
+              <td className={this.getClass([i,j],true)} key={"Cell " + i + " " + j}>{this.state.sudoku[i][j]}</td>
             );
           } else {
             nextLine.push(
-              <td className="clickable" key={"Cell " + i + " " + j} />
+              <td className={this.getClass([i,j],false)} key={"Cell " + i + " " + j} onClick={() => {
+                console.log(i + "," + j + " cell clicked.");
+                this.setState({ modalPos: [i,j] });
+              }} />
             );
           }
         }
@@ -34,14 +68,64 @@ class App extends Component {
           <tr key={"Row " + i}>{nextLine}</tr>
         );
       }
-      return <table><tbody>{final}</tbody></table>;
+      return <div><div className="boardTable"><table><tbody>{final}</tbody></table></div><Modal modalPos={this.state.modalPos}/></div>;
     } else {
-      return <button className="btn GenerateButton" onClick={() => {
+      return <button className="btn generateButton" onClick={() => {
         this.setState({ sudoku: scrambleSudoku() });
       }}>Generate Sudoku</button>;
     }
   }
 
+}
+
+function addBorder(pos1, pos2) {
+  let final = "";
+  const above = copy(pos2);
+  above[0] -= 1;
+  const left = copy(pos2);
+  left[1] -= 1;
+  const below = copy(pos2);
+  below[0] += 1;
+  const right = copy(pos2);
+  right[1] += 1;
+  let hasAbove = true;
+  let hasLeft = true;
+  let hasBelow = true;
+  let hasRight = true;
+  if (above[0] < 0) {
+    hasAbove = false;
+  }
+  if (left[1] < 0) {
+    hasLeft = false;
+  }
+  if (below[0] > 8) {
+    hasBelow = false;
+  }
+  if (right[1] > 8) {
+    hasRight = false;
+  }
+  const notAbove = (!hasAbove || !isNeighbor(pos1,above));
+  const notLeft = (!hasLeft || !isNeighbor(pos1,left));
+  const notBelow = (!hasBelow || !isNeighbor(pos1,below));
+  const notRight = (!hasRight || !isNeighbor(pos1,right));
+
+  if (notAbove && notLeft) {
+    final += " topLeft";
+  }
+
+  if (notAbove && notRight) {
+    final += " topRight";
+  }
+
+  if (notBelow && notLeft) {
+    final += " bottomLeft";
+  }
+
+  if (notBelow && notRight) {
+    final += " bottomRight";
+  }
+
+  return final;
 }
 
 function scrambleSudoku() {
@@ -179,6 +263,35 @@ function copy(o) {
     output[key] = (typeof v === "object") ? copy(v) : v;
   }
   return output;
+}
+
+function arrEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] instanceof Array && arr2[i] instanceof Array) {
+      if (!arrEqual(arr1[i], arr2[i])) {
+        return false;
+      }
+    } else if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function isNeighbor(pos1, pos2) {
+  if (pos1[0] === pos2[0] || pos1[1] === pos2[1]) {
+    return true;
+  }
+
+  if (Math.floor(pos1[0] / 3) === Math.floor(pos2[0] / 3) && Math.floor(pos1[1] / 3) === Math.floor(pos2[1] / 3)) {
+    return true;
+  }
+
+  return false;
 }
 
 export default App;
