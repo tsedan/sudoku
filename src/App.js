@@ -16,6 +16,13 @@ class App extends Component {
     );
   }
 
+  handleAddNum = (val) => {
+    const pos = this.state.modalPos;
+    const vsudoku = copy(this.state.sudoku);
+    vsudoku[pos[0]][pos[1]] = val;
+    this.setState({ sudoku:vsudoku });
+  }
+
   getClass = (pos,original) => {
     if (!original) {
       let nameClass = "";
@@ -68,7 +75,7 @@ class App extends Component {
           <tr key={"Row " + i}>{nextLine}</tr>
         );
       }
-      return <div><div className="boardTable"><table><tbody>{final}</tbody></table></div><Modal modalPos={this.state.modalPos}/></div>;
+      return <div><div className="boardTable"><table><tbody>{final}</tbody></table></div><Modal modalPos={this.state.modalPos} handleAddNum={(val) => { this.handleAddNum(val) }}/></div>;
     } else {
       return <button className="btn generateButton" onClick={() => {
         this.setState({ sudoku: scrambleSudoku() });
