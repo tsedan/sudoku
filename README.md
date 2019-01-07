@@ -1,9 +1,9 @@
-#About
+# About
 
 This is meant to be a display of what I think is one of the most efficient methods to generate sudokus. <br>
 It is also another small project meant to enlarge my repertoire of repositories on GitHub.
 
-#Credits
+# Credits
 
 Me, myself and I :) <br>
 Also, Matthieu James for the favicon. <br>
