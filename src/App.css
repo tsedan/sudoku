@@ -80,6 +80,16 @@ td {
   background-color: #484848;
 }
 
+.yellow {
+  color: #FFF7C0;
+  border-color: #DDDDDD !important;
+}
+
+.blue {
+  color: #6EC4DB;
+  border-color: #DDDDDD !important;
+}
+
 .topLeft {
   border-top-left-radius: 0.5rem;
 }

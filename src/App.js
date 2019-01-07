@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Modal from './Modal.js';
 import './App.css';
 
+var osudoku = null;
+
 class App extends Component {
   state = {
     sudoku: null,
@@ -28,12 +30,12 @@ class App extends Component {
       let nameClass = "";
       if (this.state.modalPos !== null) {
         if (arrEqual(this.state.modalPos, pos)) {
-          nameClass += "clicked";
+          nameClass = "clicked blue";
         } else if (isNeighbor(this.state.modalPos, pos)) {
-          nameClass += "neighbor";
+          nameClass = "neighbor yellow";
         }
         if (!arrEqual(this.state.modalPos, pos)) {
-          nameClass += " clickable";
+          nameClass += " clickable yellow";
         }
         nameClass += addBorder(this.state.modalPos, pos);
       } else {
@@ -53,15 +55,24 @@ class App extends Component {
   }
 
   drawSudoku = () => {
-    if (this.state.sudoku !== null) {
+    if (osudoku !== null) {
       let final = [];
       for (let i = 0; i < 9; i++) {
         let nextLine = [];
         for (let j = 0; j < 9; j++) {
           if (this.state.sudoku[i][j] !== 0) {
-            nextLine.push(
-              <td className={this.getClass([i,j],true)} key={"Cell " + i + " " + j}>{this.state.sudoku[i][j]}</td>
-            );
+            if (osudoku[i][j] !== 0) {
+              nextLine.push(
+                <td className={this.getClass([i,j],true)} key={"Cell " + i + " " + j}>{this.state.sudoku[i][j]}</td>
+              );
+            } else {
+              nextLine.push(
+                <td className={this.getClass([i,j],false)} key={"Cell " + i + " " + j} onClick={() => {
+                  console.log(i + "," + j + " cell clicked.");
+                  this.setState({ modalPos: [i,j] });
+                }}>{this.state.sudoku[i][j]}</td>
+              );
+            }
           } else {
             nextLine.push(
               <td className={this.getClass([i,j],false)} key={"Cell " + i + " " + j} onClick={() => {
@@ -78,7 +89,8 @@ class App extends Component {
       return <div><div className="boardTable"><table><tbody>{final}</tbody></table></div><Modal modalPos={this.state.modalPos} handleAddNum={(val) => { this.handleAddNum(val) }}/></div>;
     } else {
       return <button className="btn generateButton" onClick={() => {
-        this.setState({ sudoku: scrambleSudoku() });
+        osudoku = scrambleSudoku();
+        this.setState({ sudoku: copy(osudoku) });
       }}>Generate Sudoku</button>;
     }
   }
