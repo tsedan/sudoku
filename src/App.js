@@ -88,10 +88,10 @@ class App extends Component {
       }
       return <div><div className="boardTable"><table><tbody>{final}</tbody></table></div><Modal modalPos={this.state.modalPos} handleAddNum={(val) => { this.handleAddNum(val) }}/></div>;
     } else {
-      return <button className="btn generateButton" onClick={() => {
+      return <div className="generateButton"><button className="btn" onClick={() => {
         osudoku = scrambleSudoku();
         this.setState({ sudoku: copy(osudoku) });
-      }}>Generate Sudoku</button>;
+      }}>Generate Sudoku</button></div>;
     }
   }
 
