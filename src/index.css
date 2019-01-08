@@ -2,14 +2,7 @@
   font-family: 'AdamCGPro';
   font-style: normal;
   font-weight: normal;
-  src: local('AdamCGPro'), url('Fonts/AdamCGPro.otf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Inconsolata'), url('Fonts/Inconsolata.ttf') format('truetype');
+  src: local('AdamCGPro'), url('AdamCGPro.otf') format('truetype');
 }
 
 html, body {
