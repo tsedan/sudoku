@@ -83,11 +83,13 @@ td {
 .yellow {
   color: #FFF7C0;
   border-color: #DDDDDD !important;
+  user-select: none;
 }
 
 .blue {
   color: #6EC4DB;
   border-color: #DDDDDD !important;
+  user-select: none;
 }
 
 .topLeft {
