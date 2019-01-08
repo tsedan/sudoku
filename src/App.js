@@ -12,17 +12,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.drawSudoku()}
-      </div>
+      <React.Fragment>
+        <div className="clickWrapper" onClick={(event) => {
+          this.setState({ modalPos:null });
+        }} />
+        <div className="App">
+          {this.drawSudoku()}
+        </div>
+      </React.Fragment>
     );
   }
 
   handleAddNum = (val) => {
     const pos = this.state.modalPos;
     const vsudoku = copy(this.state.sudoku);
-    vsudoku[pos[0]][pos[1]] = val;
+    if (pos != null) {
+      vsudoku[pos[0]][pos[1]] = val;
+    }
     this.setState({ sudoku:vsudoku });
+    this.setState({ modalPos:null });
   }
 
   getClass = (pos,original) => {
@@ -32,14 +40,20 @@ class App extends Component {
         if (arrEqual(this.state.modalPos, pos)) {
           nameClass = "clicked blue";
         } else if (isNeighbor(this.state.modalPos, pos)) {
-          nameClass = "neighbor yellow";
+          nameClass = "neighbor";
         }
         if (!arrEqual(this.state.modalPos, pos)) {
-          nameClass += " clickable yellow";
+          nameClass += " clickable";
+        }
+        if (osudoku[pos[0]][pos[1]] === 0) {
+          nameClass += " yellow";
         }
         nameClass += addBorder(this.state.modalPos, pos);
       } else {
         nameClass = "clickable";
+        if (osudoku[pos[0]][pos[1]] === 0) {
+          nameClass += " yellow";
+        }
       }
       return nameClass;
     } else {
