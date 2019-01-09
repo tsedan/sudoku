@@ -42,19 +42,21 @@ html, body {
 }
 
 tr {
-  width: 100%;
   height: 8vmin;
   vertical-align: center;
-}
-
-td {
-  height:30px;
-  width:30px;
   font-size: 5vmin;
 }
 
+.boardTable td {
+  width: 8vmin;
+}
+
+.modal td {
+  width: 7.2vmin;
+}
+
 .optionData {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .optionData:hover {
@@ -74,7 +76,7 @@ td {
 }
 
 .clickable:hover {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background-color: #656565;
   cursor: pointer;
 }
@@ -102,24 +104,24 @@ td {
 }
 
 .topLeft {
-  border-top-left-radius: 0.5rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .topRight {
-  border-top-right-radius: 0.5rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .bottomLeft {
-  border-bottom-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .bottomRight {
-  border-bottom-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .boardTable td:nth-child(3n) {
   border-right: solid;
-  border-right-width: thick;
+  border-right-width: 0.75vmin;
 }
 
 .boardTable td:last-child {
@@ -128,7 +130,7 @@ td {
 
 .boardTable tr:nth-child(3n) td {
   border-bottom: solid;
-  border-bottom-width: thick;
+  border-bottom-width: 0.75vmin;
 }
 
 .boardTable tr:last-child td {
@@ -188,6 +190,6 @@ button {
 
 .modal-content {
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   overflow: hidden;
 }
