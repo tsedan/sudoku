@@ -7,4 +7,5 @@ It is also another small project meant to enlarge my repertoire of repositories 
 
 Me, myself and I :) <br>
 Also, Matthieu James for the favicon. <br>
-Here's the link to that: https://findicons.com/icon/441856/gnome_sudoku
+Here's the link to that: https://findicons.com/icon/441856/gnome_sudoku <br>
+And FontAwesome for the delete button: https://fontawesome.com/license/free
