@@ -19,7 +19,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://coloringnuns.me/sudoku",
+  "homepage": "http://sudoku.coloringnuns.me/",
   "browserslist": [
     ">0.2%",
     "not dead",
