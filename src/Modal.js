@@ -68,7 +68,7 @@ const Modal = props => {
               <td className="optionData" onClick={() => { props.handleAddNum(7) }}><span className="buttonEvents">7</span></td>
               <td className="optionData" onClick={() => { props.handleAddNum(8) }}><span className="buttonEvents">8</span></td>
               <td className="optionData" onClick={() => { props.handleAddNum(9) }}><span className="buttonEvents">9</span></td>
-              <td className="optionData" onClick={() => { props.handleAddNum(0) }}><span className="buttonEvents">&#10006;</span></td>
+              <td className="optionData" onClick={() => { props.handleAddNum(0) }}><span className="buttonEvents">&#x2716;</span></td>
             </tr>
           </tbody>
         </table>

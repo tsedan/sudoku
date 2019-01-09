@@ -156,7 +156,7 @@ button {
 
 .btn {
   padding: 0px 25px;
-  margin-top: -3px;
+  margin: 0;
   font-weight: 600;
   font-size: 14px;
   text-align: center;
@@ -165,17 +165,17 @@ button {
   color: #737373;
   border-radius: 5px;
   transition: all 0.2s;
-  box-shadow: 0px 8px 0px 0px #CCC599;
+  box-shadow: 0px 10px 0px 0px #CCC599;
   background: #FFF7C0;
 }
 
 .btn:active {
-  margin-top: 5px !important;
+  margin-top: 20px !important;
   box-shadow: 0px 0px 0px 0px #CCC599 !important;
 }
 
 .btn:hover {
-  margin-top: 0px;
+  margin-top: 10px;
   box-shadow: 0px 5px 0px 0px #CCC599;
 }
 
@@ -191,5 +191,4 @@ button {
 .modal-content {
   background-color: white;
   border-radius: 0.25rem;
-  overflow: hidden;
 }
