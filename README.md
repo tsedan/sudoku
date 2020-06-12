@@ -1,7 +1,7 @@
 # About
 
 This is meant to be a display of what I think is one of the most efficient methods to generate sudokus. <br>
-It is also another small project meant to enlarge my repertoire of repositories on GitHub.
+The sudokus are pretty difficult but there is technically a pattern, albeit extremely hard to find
 
 # Credits
 
